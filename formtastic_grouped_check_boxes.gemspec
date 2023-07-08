@@ -14,9 +14,9 @@ Gem::Specification.new do |spec|
   spec.email            = ["sergey.pedan@gmail.com"]
   spec.license          =  "MIT"
 
-  spec.summary          =  "..."
+  spec.summary          =  "Group your checkboxes like grouped select via “grouped_collection_select” in Rails"
   spec.description      = <<~HEREDOC
-                            #{spec.summary}. This gem:
+                            #{spec.summary}. This gem adds a new Formtastic input type “grouped_check_boxes”, that helps you group long lists of checkboxes.
                           HEREDOC
 
   spec.homepage         =  "https://github.com/sergeypedan/formtastic-grouped-checkboxes"

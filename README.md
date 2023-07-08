@@ -1,5 +1,9 @@
 # Formtastic grouped checkboxes
 
+[![Gem Version](https://badge.fury.io/rb/formtastic_grouped_check_boxes.svg)](https://badge.fury.io/rb/formtastic_grouped_check_boxes)
+
+Group your Formtastic checkboxes like grouped select via “grouped_collection_select” in Rails.
+
 ## Installation
 
 Add this line to your application's Gemfile:
