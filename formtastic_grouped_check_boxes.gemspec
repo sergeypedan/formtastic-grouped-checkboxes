@@ -19,7 +19,7 @@ Gem::Specification.new do |spec|
                             #{spec.summary}. This gem:
                           HEREDOC
 
-  spec.homepage         =  "https://github.com/sergeypedan/formtastic-grouped-check-boxes"
+  spec.homepage         =  "https://github.com/sergeypedan/formtastic-grouped-checkboxes"
   spec.extra_rdoc_files = ["README.md", "CHANGELOG.md"]
   spec.rdoc_options     = ["--charset=UTF-8"]
   spec.metadata         = { "changelog_uri"     => "#{spec.homepage}/blob/master/CHANGELOG.md",
