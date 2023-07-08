@@ -1,0 +1,12 @@
+.byebug_history
+.DS_Storage
+.rspec_status
+/.bundle/
+/.yardoc
+/_yardoc/
+/coverage/
+/doc/
+/log/*.log
+/pkg/
+/spec/reports/
+/tmp/
