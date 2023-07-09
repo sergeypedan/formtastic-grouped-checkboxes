@@ -41,22 +41,31 @@ Providing that our models look like so:
 
 ```ruby
 class Project < ApplicationRecord
-  has_many :technology_associations, as: :techable, inverse_of: :techable, dependent: :destroy
-  has_many :technologies, through: :technology_associations
+  has_many :technologies # details omitted
   accepts_nested_attributes_for :technologies
 end
 ```
 
 ```ruby
 class Technology < ApplicationRecord
+  has_many :projects # details omitted
   belongs_to :area, foreign_key: :area_id, class_name: "TechnologyArea", optional: true
 end
+
+# Table name: technologies
+#  id       :bigint  not null, primary key
+#  name     :string  not null
+#  area_id  :bigint
 ```
 
 ```ruby
 class TechnologyArea < ApplicationRecord
   has_many :technologies
 end
+
+# Table name: technology_areas
+#  id    :bigint  not null, primary key
+#  name  :string  not null
 ```
 
 In ActiveAdmin you can do the following
