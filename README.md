@@ -35,24 +35,17 @@ It also adds 3 new input options, 2 of which follow the Rails naming convention 
 - `group_label_method` — The name of a method which, when called on a member of collection, returns a string to be used as the label attribute for its <optgroup> tag. It can also be any object that responds to call, such as a proc, that will be called for each member of the collection to retrieve the label.
 - `group_label_parent` — Whether to prepend the fieldset label with the parent input title
 
-```ruby
-ActiveAdmin.register Project do
-  permit_params technology_ids: []
+### Example
 
-  form do |f|
-    f.inputs "Technologies" do
-      f.input :technologies,
-              as: :grouped_check_boxes, \
-              collection: Technology.select(:id, :name, :area_id).includes(:area).order(:name), \
-              group_method: :area, \
-              group_label_method: :name, \
-              group_label_parent: true
-    end
-  end
+Providing that our models look like so:
+
+```ruby
+class Project < ApplicationRecord
+  has_many :technology_associations, as: :techable, inverse_of: :techable, dependent: :destroy
+  has_many :technologies, through: :technology_associations
+  accepts_nested_attributes_for :technologies
 end
 ```
-
-Providing that
 
 ```ruby
 class Technology < ApplicationRecord
@@ -63,6 +56,27 @@ end
 ```ruby
 class TechnologyArea < ApplicationRecord
   has_many :technologies
+end
+```
+
+In ActiveAdmin you can do the following
+
+```ruby
+ActiveAdmin.register Project do
+  permit_params technology_ids: [], ...
+
+  form do |f|
+    f.inputs "Technologies" do
+      f.input :technologies,
+              as: :grouped_check_boxes, \
+              collection: Technology.order(:name) \
+                          .select(:id, :name, :area_id) \ # note the `:area_id`
+                          .includes(:area), \             # prevent N+1
+              group_method: :area, \                      # calls `.area` on each instance of `Technology` (that’s why we need `:area_id`)
+              group_label_method: :name, \                # calls `.name` on each instance of `TechnologyArea`
+              group_label_parent: true                    # not required
+    end
+  end
 end
 ```
 
