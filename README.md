@@ -66,7 +66,11 @@ class TechnologyArea < ApplicationRecord
 end
 ```
 
-Results in
+Results in:
+
+![screenshot-1](https://github.com/sergeypedan/formtastic-grouped-checkboxes/assets/2311484/7f553b64-d461-4d60-845d-829ba36e3768)
+
+While producing such code:
 
 ```html
 <fieldset class="inputs">
