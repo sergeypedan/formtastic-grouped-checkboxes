@@ -29,11 +29,11 @@ Import our Sass file “formtastic-grouped-check-boxes.css” in your CSS entryp
 
 This gem adds a new input type `:grouped_check_boxes`.
 
-It also adds 3 new input options, 2 of which follow the Rails naming convention from `grouped_collection_select`:
+It also adds 3 new input options, 2 of which follow the Rails naming convention from `grouped_collection_select` ([docs](https://api.rubyonrails.org/classes/ActionView/Helpers/FormOptionsHelper.html#method-i-grouped_collection_select)):
 
-- `group_method` — The name of a method which, when called on a member of collection, returns an array of child objects. It can also be any object that responds to call, such as a proc, that will be called for each member of the collection to retrieve the value.
-- `group_label_method` — The name of a method which, when called on a member of collection, returns a string to be used as the label attribute for its <optgroup> tag. It can also be any object that responds to call, such as a proc, that will be called for each member of the collection to retrieve the label.
-- `group_label_parent` — Whether to prepend the fieldset label with the parent input title
+- `group_method` — The name of a method which, when called on a member of `collection`, returns an array of child objects. It can also be a `Proc` / `lambda`, that will be called for each member of the collection to retrieve the value.
+- `group_label_method` — The name of a method which, when called on a member of collection, returns a string to be used as the group name. No `Proc` support here yet.
+- `group_label_parent` — Whether to prepend the fieldset label with the parent input title (on: “Technologies / Marketing”, off: “Marketing”).
 
 ### Example
 
