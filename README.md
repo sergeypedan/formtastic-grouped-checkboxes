@@ -80,10 +80,10 @@ ActiveAdmin.register Project do
               as: :grouped_check_boxes, \
               collection: Technology.order(:name) \
                           .select(:id, :name, :area_id) \ # note the `:area_id`
-                          .includes(:area), \             # prevent N+1
-              group_method: :area, \                      # calls `.area` on each instance of `Technology` (that’s why we need `:area_id`)
-              group_label_method: :name, \                # calls `.name` on each instance of `TechnologyArea`
-              group_label_parent: true                    # not required
+                          .includes(:area), \ # prevent N+1
+              group_method: :area, \ # calls `.area` on each instance of `Technology` (that’s why we need `:area_id`)
+              group_label_method: :name, \ # calls `.name` on each instance of `TechnologyArea`
+              group_label_parent: true # not required
     end
   end
 end
